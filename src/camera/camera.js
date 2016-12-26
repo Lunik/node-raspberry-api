@@ -2,13 +2,7 @@ var spawn = require('child_process').spawn;
 var stream = require('stream')
 var path = require('path')
 
-function Camera(){
-  this.options = {
-    resolution: [],
-    exposure: 'auto',
-    timeout: 5000
-  }
-}
+function Camera(){}
 
 Camera.prototype.capture = function(options){
   var parsedOptions = this.processOptions(options)
