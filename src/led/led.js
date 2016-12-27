@@ -34,6 +34,39 @@ Led.prototype.printText = function(text, color){
   return python
 }
 
+Led.prototype.setPixel = function(x, y, color){
+  if(typeof x === 'undefined'
+  || typeof y === 'undefined'
+  || typeof color === 'undefined'
+  || typeof color[0] === 'undefined'
+  || typeof color[1] === 'undefined'
+  || typeof color[2] === 'undefined'){
+    return -1
+  }
+
+  var python = spawn('python', [path.join(__dirname, 'pysrc/setPixel.py'), x, y, color[0], color[1], color[2]])
+
+  return python
+}
+
+Led.prototype.getPixel = function(x, y, cb){
+  if(typeof x === 'undefined'
+  || typeof y === 'undefined'){
+    return -1
+  }
+
+  var python = spawn('python', [path.join(__dirname, 'pysrc/getPixel.py'), x, y])
+  var color = ''
+
+  python.stdout.on('data', function(data){
+    color += data
+  })
+
+  python.stderr.on('finish', function(){
+    cb(JSON.parse(color))
+  })
+}
+
 Led.prototype.clear = function(){
   var python = spawn('python', [path.join(__dirname, 'pysrc/clear.py')])
 
