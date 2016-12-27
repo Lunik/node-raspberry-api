@@ -2,10 +2,10 @@ var async = require('async')
 var API = require('../src/index.js')
 
 var Sensor = new API.Sensor()
-var Temperature = new Sensor.Temperature()
+var Humidity = new Sensor.Humidity()
 
 var Led = new API.Led()
 
-Temperature.getTemperature(function(temp){
-  Led.printText(`${Math.floor(temp)}°C`, [255, 255, 255])
+Humidity.getHumidity(function(pres){
+  Led.printText(`${pres}`, [255, 255, 255])
 })
