@@ -6,7 +6,7 @@ node_js:
 - '5'
 env:
 script:
-- sudo npm test
+- npm test
 cache:
   directories:
   - $(pwd)/node_modules
