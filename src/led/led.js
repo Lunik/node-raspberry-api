@@ -10,27 +10,22 @@ Led.prototype.printIcon = function(name){
   }
   var python = spawn('python', [path.join(__dirname, 'pysrc/printBMP.py'), path.join(__dirname, `images/${name}.bmp`)])
 
-  var ledStream = new stream()
+  return python
+}
 
-  python.stderr.on('data', ledStream.emit.bind(ledStream, 'error'))
-  python.stdout.on('data', ledStream.emit.bind(ledStream, 'data'))
-  python.stdout.on('end', ledStream.emit.bind(ledStream, 'end'))
-  python.on('error', ledStream.emit.bind(ledStream, 'error'))
+Led.prototype.printImage = function(path){
+  if(typeof path === 'undefined'){
+    return -1
+  }
+  var python = spawn('python', [path.join(__dirname, 'pysrc/printBMP.py'), path])
 
-  return ledStream
+  return python
 }
 
 Led.prototype.clear = function(){
   var python = spawn('python', [path.join(__dirname, 'pysrc/clear.py')])
 
-  var ledStream = new stream()
-
-  python.stderr.on('data', ledStream.emit.bind(ledStream, 'error'))
-  python.stdout.on('data', ledStream.emit.bind(ledStream, 'data'))
-  python.stdout.on('end', ledStream.emit.bind(ledStream, 'end'))
-  python.on('error', ledStream.emit.bind(ledStream, 'error'))
-
-  return ledStream
+  return python
 }
 
 module.exports = Led
