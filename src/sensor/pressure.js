@@ -5,14 +5,14 @@ function Pressure(){}
 
 Pressure.prototype.getPressure = function(cb){
   var python = spawn('python', [path.join(__dirname, 'pysrc/pressure.py')])
-  var temp = ''
+  var pres = ''
 
   python.stdout.on('data', function(data){
-    temp += data
+    pres += data
   })
 
   python.stderr.on('finish', function(){
-    cb(temp)
+    cb(pres)
   })
 }
 

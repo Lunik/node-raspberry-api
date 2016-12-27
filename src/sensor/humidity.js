@@ -5,14 +5,14 @@ function Humidity(){}
 
 Humidity.prototype.getHumidity = function(cb){
   var python = spawn('python', [path.join(__dirname, 'pysrc/humidity.py')])
-  var temp = ''
+  var hum = ''
 
   python.stdout.on('data', function(data){
-    temp += data
+    hum += data
   })
 
   python.stderr.on('finish', function(){
-    cb(temp)
+    cb(hum)
   })
 }
 
