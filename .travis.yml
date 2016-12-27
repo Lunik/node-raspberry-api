@@ -1,0 +1,20 @@
+notifications:
+  email: false
+language: node_js
+node_js:
+- '6'
+- '5'
+env: 
+script:
+- npm test
+cache:
+  directories:
+  - $(pwd)/node_modules
+  - $(pwd)/src/public/src/bower_components
+deploy:
+  provider: npm
+  email: guillaume.lunik@gmail.com
+  on:
+    tags: true
+  api_key:
+    secure: oXAxV1iyoT3+XcuZ48N+rFOZlVT6B/16PHa8PcgwiJUSBPAWqWchApLjbsVJx2pCE0ujCoQh9VML88qb2TU8TZvCj9k6WM3mFSrzSGJ/Jlim++4JLL/WeeEINTPoFXYfNRIT4e43Jr0LPN+qErW93+MOleTt0VayLIb0sjS1K3djKQoVXIiDZ/ckbcO9rVu5s4n3E8eDLp0+UpVRS7Vu1ZMi/K2ucEI0HQ/LU/hPM9jrLNao1m+jCf/z/MPJKvAkoVNmQpvyZzEqf0GCFMtFOYLUt/0Jij+hwkyxT6e75uExkKgsfmN7sIrQdWLNAlV+nTJfZEW9kU+CQmnwnJIajd7rlbAqaAgeDsqVVyyVzCK1Z2S5se5VgqZkMbMZUP0pgxyfGkCXJUsY1ZreGQIX691lmz44opLeFmQaDkMdjkSciUsFpNLjokSye41MMox3Ys+SkTWE0rwo9KWktN/LAmHZyPKJnteVig0Qi3Ga7XQJUpuCY7C3ogDpcOxDlfGCjdmXgXniRoDGn4FTg41pdJpquW7ChrwI4r8PfhTc+DNU0MWhunaupHM0UPYkqfUIjkS6FAq8UnlnjKJ3N6x1NIu6oTSILs0KATmPuD8LDPA7azsagMXGyRGKK2zVtKfJ9ypCbIrqyNIna30clJ/GjAhIYplWQYcpY0HrziGDe0g=
