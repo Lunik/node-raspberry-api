@@ -25,8 +25,11 @@ Led.prototype.printText = function(text, color){
   if(typeof text === 'undefined'
   || typeof color === 'undefined'
   || typeof color[0] === 'undefined'
+  || color[0] < 0 || color[0] > 255
   || typeof color[1] === 'undefined'
-  || typeof color[2] === 'undefined'){
+  || color[1] < 0 || color[1] > 255
+  || typeof color[2] === 'undefined'
+  || color[2] < 0 || color[2] > 255){
     return -1
   }
   var python = spawn('python', [path.join(__dirname, 'pysrc/printText.py'), color[0], color[1], color[2], text])
@@ -36,11 +39,16 @@ Led.prototype.printText = function(text, color){
 
 Led.prototype.setPixel = function(x, y, color){
   if(typeof x === 'undefined'
+  || x < 0 || x > 7
   || typeof y === 'undefined'
+  || y < 0 || y > 7
   || typeof color === 'undefined'
   || typeof color[0] === 'undefined'
+  || color[0] < 0 || color[0] > 255
   || typeof color[1] === 'undefined'
-  || typeof color[2] === 'undefined'){
+  || color[1] < 0 || color[1] > 255
+  || typeof color[2] === 'undefined'
+  || color[2] < 0 || color[2] > 255){
     return -1
   }
 
@@ -51,7 +59,9 @@ Led.prototype.setPixel = function(x, y, color){
 
 Led.prototype.getPixel = function(x, y, cb){
   if(typeof x === 'undefined'
-  || typeof y === 'undefined'){
+  || x < 0 || x > 7
+  || typeof y === 'undefined'
+  || y < 0 || y > 7){
     return -1
   }
 
