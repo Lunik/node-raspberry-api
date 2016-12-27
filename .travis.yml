@@ -4,9 +4,9 @@ language: node_js
 node_js:
 - '6'
 - '5'
-env: 
+env:
 script:
-- npm test
+- sudo npm test
 cache:
   directories:
   - $(pwd)/node_modules
