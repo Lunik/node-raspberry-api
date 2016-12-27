@@ -1,6 +1,6 @@
 
 function Sensor(){
-  this.Temperature = require('./temp.js')
+  this.Temperature = require('./temperature.js')
 }
 
 module.exports = Sensor

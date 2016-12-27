@@ -4,7 +4,7 @@ var path = require('path')
 function Temp(){}
 
 Temp.prototype.getTemperature = function(cb){
-  var python = spawn('python', [path.join(__dirname, 'pysrc/temp.py')])
+  var python = spawn('python', [path.join(__dirname, 'pysrc/temperature.py')])
   var temp = ''
 
   python.stdout.on('data', function(data){
