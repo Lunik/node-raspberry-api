@@ -1,11 +1,11 @@
 var async = require('async')
 var API = require('../src/index.js')
 
-var led = new API.Led()
+var Sensor = new API.Sensor()
+var Temperature = new Sensor.Temperature()
 
-led.printIcon('gmail')
+var Led = new API.Led()
 
-setTimeout(function(){
-  led.printIcon('facebook')
-  setTimeout(led.clear, 2000)
-}, 2000)
+Temperature.getTemperature(function(temp){
+  Led.printText(`${Math.floor(temp)}°C`, [255, 255, 255])
+})

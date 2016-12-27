@@ -1,5 +1,4 @@
 var spawn = require('child_process').spawn;
-var stream = require('stream')
 var path = require('path')
 
 function Led(){}
@@ -24,13 +23,12 @@ Led.prototype.printImage = function(path){
 
 Led.prototype.printText = function(text, color){
   if(typeof text === 'undefined'
-  && typeof color === 'object'
-  && typeof color[0] === 'number'
-  && typeof color[1] === 'number'
-  && typeof color[2] === 'number'){
+  || typeof color === 'undefined'
+  || typeof color[0] === 'undefined'
+  || typeof color[1] === 'undefined'
+  || typeof color[2] === 'undefined'){
     return -1
   }
-
   var python = spawn('python', [path.join(__dirname, 'pysrc/printText.py'), color[0], color[1], color[2], text])
 
   return python
