@@ -158,40 +158,42 @@ Camera.prototype.processOptions = function(options){
   }
   var res = []
   for(var o in options){
-    switch(opt[o].type){
-      case 'number':
-        if(typeof options[o] !== 'number'){
-          console.error(options[o], 'is not a number')
-          return -1
-        }
-        for(var i in opt[o].values){
-          if(!eval(`${opt[o].values[i]} ${options[o]}`)){
-            console.error(options[o], 'should be', opt[o].values[i])
+    if(opt[o]){
+      switch(opt[o].type){
+        case 'number':
+          if(typeof options[o] !== 'number'){
+            console.error(options[o], 'is not a number')
             return -1
           }
-        }
-        res.push(`-${opt[o].o}`)
-        res.push(options[o])
-        break
-      case 'string':
-        if(typeof options[o] !== 'string'){
-          console.error(options[o], 'is not a string')
-          return -1
-        }
-        if(typeof options[o].match(opt[o].values) === 'undefined'){
-          console.error(options[o], 'should match', opt[o].values)
-          return -1
-        }
-        res.push(`-${opt[o].o}`)
-        res.push(options[o])
-        break
-      case 'boolean':
-        if(typeof options[o] !== 'boolean'){
-          console.error(options[o], 'is not a boolean')
-          return -1
-        }
-        res.push(`-${opt[o].o}`)
-        break
+          for(var i in opt[o].values){
+            if(!eval(`${opt[o].values[i]} ${options[o]}`)){
+              console.error(options[o], 'should be', opt[o].values[i])
+              return -1
+            }
+          }
+          res.push(`-${opt[o].o}`)
+          res.push(options[o])
+          break
+        case 'string':
+          if(typeof options[o] !== 'string'){
+            console.error(options[o], 'is not a string')
+            return -1
+          }
+          if(typeof options[o].match(opt[o].values) === 'undefined'){
+            console.error(options[o], 'should match', opt[o].values)
+            return -1
+          }
+          res.push(`-${opt[o].o}`)
+          res.push(options[o])
+          break
+        case 'boolean':
+          if(typeof options[o] !== 'boolean'){
+            console.error(options[o], 'is not a boolean')
+            return -1
+          }
+          res.push(`-${opt[o].o}`)
+          break
+      }
     }
   }
 
