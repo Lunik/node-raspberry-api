@@ -43,17 +43,17 @@ Camera.prototype.processOptions = function(options){
     width: {
       o: 'w',
       type: 'number',
-      values: ['>= 0']
+      values: ['0 >=']
     },
     height: {
       o: 'h',
       type: 'number',
-      values: ['>= 0']
+      values: ['0 >=']
     },
     quality: {
       o: 'q',
       type: 'number',
-      values: ['>= 0', '100 =>']
+      values: ['0 >=', '100 =>']
     },
     raw: {
       o: 'r',
@@ -68,7 +68,7 @@ Camera.prototype.processOptions = function(options){
     timeout: {
       o: 't',
       type: 'number',
-      values: ['>= 0']
+      values: ['0 >=']
     },
     encoding: {
       o: 'e',
@@ -78,37 +78,37 @@ Camera.prototype.processOptions = function(options){
     timelapse: {
       o: 'tl',
       type: 'number',
-      values: ['>= 0']
+      values: ['0 >=']
     },
     mode: {
       o: 'md',
       type: 'number',
-      values: ['>= 0', '7 =>']
+      values: ['0 >=', '7 =>']
     },
     opacity: {
       o: 'op',
       type: 'number',
-      values: ['>= 0', '255 =>']
+      values: ['0 >=', '255 =>']
     },
     sharpness: {
       o: 'sh',
       type: 'number',
-      values: ['>= -100', '100 =>']
+      values: ['-100 >=', '100 =>']
     },
     contrast: {
       o: 'co',
       type: 'number',
-      values: ['>= -100', '100 =>']
+      values: ['-100 >=', '100 =>']
     },
     brightness: {
       o: 'br',
       type: 'number',
-      values: ['>= 0', '100 =>']
+      values: ['0 >=', '100 =>']
     },
     saturation: {
       o: 'sa',
       type: 'number',
-      values: ['>= -100', '100 =>']
+      values: ['-100 >= ', '100 =>']
     },
     vstab: {
       o: 'vs',
@@ -153,7 +153,7 @@ Camera.prototype.processOptions = function(options){
     shutter: {
       o: 'ss',
       type: 'number',
-      values: ['>= 0', '6000000 =>']
+      values: ['0 >=', '6000000 =>']
     }
   }
   var res = []
